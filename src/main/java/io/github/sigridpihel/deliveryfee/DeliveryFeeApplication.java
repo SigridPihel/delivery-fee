@@ -1,4 +1,4 @@
-package io.github.sigridpihel.delivery_fee;
+package io.github.sigridpihel.deliveryfee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
