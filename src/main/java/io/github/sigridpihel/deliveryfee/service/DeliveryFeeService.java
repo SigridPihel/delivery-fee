@@ -4,6 +4,7 @@ import io.github.sigridpihel.deliveryfee.exception.IncompleteWeatherDataExceptio
 import io.github.sigridpihel.deliveryfee.exception.RegionalBaseFeeNotFoundException;
 import io.github.sigridpihel.deliveryfee.exception.VehicleUsageForbiddenException;
 import io.github.sigridpihel.deliveryfee.exception.WeatherDataNotFoundException;
+import io.github.sigridpihel.deliveryfee.model.dto.DeliveryFeeResponse;
 import io.github.sigridpihel.deliveryfee.model.entity.*;
 import io.github.sigridpihel.deliveryfee.model.enumeration.City;
 import io.github.sigridpihel.deliveryfee.model.enumeration.VehicleType;
@@ -27,12 +28,13 @@ public class DeliveryFeeService {
     private static final List<String> FORBIDDEN_PHENOMENA = List.of("Glaze", "Hail", "Thunder");
     private static final BigDecimal MAX_ALLOWED_WIND_SPEED = new BigDecimal("20");
 
-    public BigDecimal calculateTotalDeliveryFee(City city, VehicleType vehicle) {
+    public DeliveryFeeResponse calculateTotalDeliveryFee(City city, VehicleType vehicle) {
         WeatherObservation weatherObservation = weatherObservationRepository
                 .findFirstByStationNameOrderByObservationTimestampDesc(city.getStationName())
                 .orElseThrow(() -> new WeatherDataNotFoundException(city));
 
-        return getTotalFee(city, vehicle, weatherObservation);
+
+        return new DeliveryFeeResponse(getTotalFee(city, vehicle, weatherObservation));
     }
 
     private BigDecimal getTotalFee(City city, VehicleType vehicle, WeatherObservation weatherObservation) {

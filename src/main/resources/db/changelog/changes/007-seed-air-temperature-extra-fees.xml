@@ -8,7 +8,7 @@
     <changeSet id="007-seed-air-temperature-extra-fees" author="sigrid">
         <insert tableName="air_temperature_extra_fee">
             <column name="vehicle_type" value="SCOOTER"/>
-            <column name="fee" value="1"/>
+            <column name="fee" valueNumeric="1"/>
             <column name="max_air_temperature" value="-10"/>
         </insert>
 
