@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="007-seed-air-temperature-extra-fees" author="sigrid">
+        <insert tableName="air_temperature_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="fee" value="1"/>
+            <column name="max_air_temperature" value="-10"/>
+        </insert>
+
+        <insert tableName="air_temperature_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="fee" valueNumeric="0.5"/>
+            <column name="min_air_temperature" valueNumeric="-10"/>
+            <column name="max_air_temperature" valueNumeric="0"/>
+        </insert>
+
+        <insert tableName="air_temperature_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="fee" valueNumeric="1"/>
+            <column name="max_air_temperature" valueNumeric="-10"/>
+        </insert>
+
+        <insert tableName="air_temperature_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="fee" valueNumeric="0.5"/>
+            <column name="min_air_temperature" valueNumeric="-10"/>
+            <column name="max_air_temperature" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

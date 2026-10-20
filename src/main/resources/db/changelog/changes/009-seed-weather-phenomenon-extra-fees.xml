@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="009-seed-weather-phenomenon-extra-fees" author="sigrid">
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Light sleet"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Moderate sleet"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Heavy snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Moderate snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Light snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Heavy snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Moderate snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Light snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Light shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Moderate shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Heavy shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Light rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Moderate rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="phenomenon" value="Heavy rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Light sleet"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Moderate sleet"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Heavy snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Moderate snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Light snowfall"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Heavy snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Moderate snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Light snow shower"/>
+            <column name="fee" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Light shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Moderate shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Heavy shower"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Light rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Moderate rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+
+        <insert tableName="weather_phenomenon_extra_fee">
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="phenomenon" value="Heavy rain"/>
+            <column name="fee" valueNumeric="0.5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="006-seed-regional-base-fees" author="sigrid">
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TALLINN"/>
+            <column name="vehicle_type" value="CAR"/>
+            <column name="fee" value="4"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TALLINN"/>
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="fee" value="3.5"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TALLINN"/>
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="fee" value="3"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TARTU"/>
+            <column name="vehicle_type" value="CAR"/>
+            <column name="fee" value="3.5"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TARTU"/>
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="fee" value="3"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="TARTU"/>
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="fee" value="2.5"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="PÄRNU"/>
+            <column name="vehicle_type" value="CAR"/>
+            <column name="fee" value="3"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="PÄRNU"/>
+            <column name="vehicle_type" value="SCOOTER"/>
+            <column name="fee" value="2.5"/>
+        </insert>
+
+        <insert tableName="regional_base_fee">
+            <column name="city" value="PÄRNU"/>
+            <column name="vehicle_type" value="BIKE"/>
+            <column name="fee" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

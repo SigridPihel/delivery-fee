@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="005-create-weather-phenomenon-extra-fee-table" author="sigrid">
+        <createTable tableName="weather_phenomenon_extra_fee">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="vehicle_type" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phenomenon" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="decimal(5, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint tableName="weather_phenomenon_extra_fee"
+                             columnNames="vehicle_type, phenomenon"
+                             constraintName="uq_weather_phenomenon_extra_fee_vehicle_type_phenomenon"/>
+
+        <sql><![CDATA[
+            ALTER TABLE weather_phenomenon_extra_fee
+                ADD CONSTRAINT chk_weather_phenomenon_extra_fee_positive
+                    CHECK (fee > 0);
+            ]]></sql>
+    </changeSet>
+
+</databaseChangeLog>

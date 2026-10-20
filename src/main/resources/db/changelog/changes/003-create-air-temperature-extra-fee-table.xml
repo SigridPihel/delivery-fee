@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="003-create-air-temperature-extra-fee-table" author="sigrid">
+        <createTable tableName="air_temperature_extra_fee">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="vehicle_type" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="decimal(5, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_air_temperature" type="decimal(4, 1)"/>
+            <column name="max_air_temperature" type="decimal(4, 1)"/>
+        </createTable>
+
+        <sql><![CDATA[
+            ALTER TABLE air_temperature_extra_fee
+                ADD CONSTRAINT chk_air_temperature_extra_fee_positive
+                    CHECK (fee > 0);
+            ALTER TABLE air_temperature_extra_fee
+                ADD CONSTRAINT chk_air_temperature_extra_fee_range_bounded
+                    CHECK (min_air_temperature IS NOT NULL OR max_air_temperature IS NOT NULL);
+            ALTER TABLE air_temperature_extra_fee
+                ADD CONSTRAINT chk_air_temperature_extra_fee_min_less_than_max
+                    CHECK (min_air_temperature < max_air_temperature);
+            ]]></sql>
+    </changeSet>
+
+</databaseChangeLog>
