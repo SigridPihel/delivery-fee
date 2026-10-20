@@ -9,7 +9,6 @@ import io.github.sigridpihel.deliveryfee.model.enumeration.City;
 import io.github.sigridpihel.deliveryfee.model.enumeration.VehicleType;
 import io.github.sigridpihel.deliveryfee.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
