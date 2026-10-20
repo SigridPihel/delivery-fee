@@ -108,3 +108,19 @@ application; its startup import calls the real weather API.
 - **Forbidden conditions** (wind over 20 m/s; glaze, hail, thunder) are constants in
   `DeliveryFeeService`.
 - **Weather history** is kept: every import inserts new rows and never overwrites old ones.
+
+## Future improvements
+
+The following requirements of the task are not implemented yet:
+
+- **Datetime parameter:** the REST interface should support an optional datetime parameter.
+  When it is provided, the delivery fee should be calculated using the business rules and
+  weather conditions that were valid at that time.
+- **Managing fee rules through the REST interface (CRUD):** regional base fees and
+  weather-related extra fees should be creatable, readable, updatable and deletable through
+  the REST interface.
+
+Other improvements:
+
+- **Writing the unit tests myself:** the current tests were created with an AI assistant due to
+  lack of time.
