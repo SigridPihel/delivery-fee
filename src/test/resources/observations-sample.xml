@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<observations timestamp="1792474102">
+    <station>
+        <name>Tallinn-Harku</name>
+        <wmocode>26038</wmocode>
+        <longitude>24.602891666624284</longitude>
+        <latitude>59.398122222355134</latitude>
+        <phenomenon>Few clouds</phenomenon>
+        <visibility>35.0</visibility>
+        <precipitations>0</precipitations>
+        <airpressure>1007.7</airpressure>
+        <relativehumidity>82</relativehumidity>
+        <airtemperature>-5.3</airtemperature>
+        <winddirection>211</winddirection>
+        <windspeed>3.1</windspeed>
+        <windspeedmax>5.4</windspeedmax>
+        <waterlevel></waterlevel>
+        <waterlevel_eh2000></waterlevel_eh2000>
+        <watertemperature></watertemperature>
+        <uvindex>0.1</uvindex>
+    </station>
+    <station>
+        <name>Narva</name>
+        <wmocode>26058</wmocode>
+        <phenomenon></phenomenon>
+        <airtemperature>-6.0</airtemperature>
+        <windspeed>2.0</windspeed>
+    </station>
+    <station>
+        <name>Tartu-Tõravere</name>
+        <wmocode>26242</wmocode>
+        <phenomenon>Light snow shower</phenomenon>
+        <airtemperature>-2.1</airtemperature>
+        <windspeed>4.7</windspeed>
+    </station>
+</observations>
