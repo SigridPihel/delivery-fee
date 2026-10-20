@@ -9,6 +9,13 @@ import java.time.Instant;
 @Component
 public class WeatherObservationMapper {
 
+    /**
+     * Converts a station from the weather API into a new, unsaved entity.
+     *
+     * @param stationDto           station data from the weather API
+     * @param observationTimeStamp observation time in seconds since the Unix epoch
+     * @return the weather observation entity
+     */
     public WeatherObservation toEntity(Station stationDto, Long observationTimeStamp) {
         WeatherObservation weatherObservation = new WeatherObservation();
         weatherObservation.setStationName(stationDto.stationName());

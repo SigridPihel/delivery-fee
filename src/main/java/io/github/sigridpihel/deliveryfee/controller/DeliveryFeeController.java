@@ -17,6 +17,14 @@ public class DeliveryFeeController {
 
     private final DeliveryFeeService deliveryFeeService;
 
+    /**
+     * Returns the total delivery fee for the given city and vehicle type,
+     * based on the latest weather observation for that city.
+     *
+     * @param city        city where the delivery takes place
+     * @param vehicleType vehicle used by the courier
+     * @return the total delivery fee in euros
+     */
     @GetMapping
     public DeliveryFeeResponse getDeliveryFee(@RequestParam("city") City city, @RequestParam("vehicleType") VehicleType vehicleType) {
         return deliveryFeeService.calculateTotalDeliveryFee(city, vehicleType);

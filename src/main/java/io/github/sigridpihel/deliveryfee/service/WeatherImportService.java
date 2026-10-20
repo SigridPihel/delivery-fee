@@ -23,6 +23,11 @@ public class WeatherImportService {
 
     private static final Set<String> TRACKED_STATIONS = Set.of(City.PÄRNU.getStationName(), City.TALLINN.getStationName(), City.TARTU.getStationName());
 
+    /**
+     * Fetches the current observations from the weather API and saves a new
+     * {@link WeatherObservation} for each tracked station. Existing observations
+     * are never overwritten, so the full history is kept.
+     */
     public void importObservations() {
         Observations observations = weatherApiClient.fetchObservations();
         List<Station> trackedStations = observations.stations()

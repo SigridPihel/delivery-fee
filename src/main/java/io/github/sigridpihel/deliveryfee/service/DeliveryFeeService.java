@@ -28,6 +28,19 @@ public class DeliveryFeeService {
     private static final List<String> FORBIDDEN_PHENOMENA = List.of("Glaze", "Hail", "Thunder");
     private static final BigDecimal MAX_ALLOWED_WIND_SPEED = new BigDecimal("20");
 
+    /**
+     * Calculates the total delivery fee as the sum of the regional base fee and the
+     * air temperature, wind speed and weather phenomenon extra fees.
+     * Extra fees are based on the latest weather observation for the city.
+     *
+     * @param city    city where the delivery takes place
+     * @param vehicle vehicle used by the courier
+     * @return the total delivery fee
+     * @throws WeatherDataNotFoundException      if no weather observation exists for the city
+     * @throws RegionalBaseFeeNotFoundException  if no base fee is configured for the city and vehicle
+     * @throws IncompleteWeatherDataException    if a weather value needed for the vehicle is missing
+     * @throws VehicleUsageForbiddenException    if the weather conditions forbid the vehicle
+     */
     public DeliveryFeeResponse calculateTotalDeliveryFee(City city, VehicleType vehicle) {
         WeatherObservation weatherObservation = weatherObservationRepository
                 .findFirstByStationNameOrderByObservationTimestampDesc(city.getStationName())
