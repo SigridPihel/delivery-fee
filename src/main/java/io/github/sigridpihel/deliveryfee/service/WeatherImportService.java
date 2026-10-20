@@ -18,9 +18,10 @@ import java.util.Set;
 public class WeatherImportService {
 
     private final WeatherApiClient weatherApiClient;
-    private static final Set<String> TRACKED_STATIONS = Set.of(City.PÄRNU.getStationName(), City.TALLINN.getStationName(), City.TARTU.getStationName());
     private final WeatherObservationMapper weatherObservationMapper;
     private final WeatherObservationRepository weatherObservationRepository;
+
+    private static final Set<String> TRACKED_STATIONS = Set.of(City.PÄRNU.getStationName(), City.TALLINN.getStationName(), City.TARTU.getStationName());
 
     public void importObservations() {
         Observations observations = weatherApiClient.fetchObservations();
