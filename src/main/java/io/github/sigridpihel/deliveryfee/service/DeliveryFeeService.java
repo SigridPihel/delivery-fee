@@ -4,17 +4,12 @@ import io.github.sigridpihel.deliveryfee.exception.IncompleteWeatherDataExceptio
 import io.github.sigridpihel.deliveryfee.exception.RegionalBaseFeeNotFoundException;
 import io.github.sigridpihel.deliveryfee.exception.VehicleUsageForbiddenException;
 import io.github.sigridpihel.deliveryfee.exception.WeatherDataNotFoundException;
-import io.github.sigridpihel.deliveryfee.model.entity.AirTemperatureExtraFee;
-import io.github.sigridpihel.deliveryfee.model.entity.RegionalBaseFee;
-import io.github.sigridpihel.deliveryfee.model.entity.WeatherObservation;
-import io.github.sigridpihel.deliveryfee.model.entity.WindSpeedExtraFee;
+import io.github.sigridpihel.deliveryfee.model.entity.*;
 import io.github.sigridpihel.deliveryfee.model.enumeration.City;
 import io.github.sigridpihel.deliveryfee.model.enumeration.VehicleType;
-import io.github.sigridpihel.deliveryfee.repository.AirTemperatureExtraFeeRepository;
-import io.github.sigridpihel.deliveryfee.repository.RegionalBaseFeeRepository;
-import io.github.sigridpihel.deliveryfee.repository.WeatherObservationRepository;
-import io.github.sigridpihel.deliveryfee.repository.WindSpeedExtraFeeRepository;
+import io.github.sigridpihel.deliveryfee.repository.*;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -28,7 +23,9 @@ public class DeliveryFeeService {
     private final WeatherObservationRepository weatherObservationRepository;
     private final AirTemperatureExtraFeeRepository airTemperatureExtraFeeRepository;
     private final WindSpeedExtraFeeRepository windSpeedExtraFeeRepository;
+    private final WeatherPhenomenonExtraFeeRepository weatherPhenomenonExtraFeeRepository;
 
+    private static final List<String> FORBIDDEN_PHENOMENA = List.of("Glaze", "Hail", "Thunder");
     private static final BigDecimal MAX_ALLOWED_WIND_SPEED = new BigDecimal("20");
 
     public BigDecimal calculateTotalDeliveryFee(City city, VehicleType vehicle) {
@@ -36,14 +33,40 @@ public class DeliveryFeeService {
                 .findFirstByStationNameOrderByObservationTimestampDesc(city.getStationName())
                 .orElseThrow(() -> new WeatherDataNotFoundException(city));
 
+        return getTotalFee(city, vehicle, weatherObservation);
+    }
+
+    private BigDecimal getTotalFee(City city, VehicleType vehicle, WeatherObservation weatherObservation) {
         BigDecimal regionalBaseFee = getRegionalBaseFee(city, vehicle);
         BigDecimal airTemperatureExtraFee = getAirTemperatureExtraFee(vehicle, weatherObservation);
         BigDecimal windSpeedExtraFee = getWindSpeedExtraFee(vehicle, weatherObservation);
+        BigDecimal weatherPhenomenonExtraFee = getWeatherPhenomenonExtraFee(vehicle, weatherObservation);
 
-        // create a function that calculates all fees together!
-        BigDecimal totalFee = regionalBaseFee.add(airTemperatureExtraFee).add(windSpeedExtraFee);
+        return regionalBaseFee.add(airTemperatureExtraFee).add(windSpeedExtraFee).add(weatherPhenomenonExtraFee);
+    }
 
-        return totalFee;
+    private BigDecimal getWeatherPhenomenonExtraFee(VehicleType vehicle, WeatherObservation weatherObservation) {
+        List<WeatherPhenomenonExtraFee> rules = weatherPhenomenonExtraFeeRepository
+                .findByVehicleType(vehicle);
+
+        if (rules.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+
+        if (weatherObservation.getPhenomenon() == null) {
+            throw new IncompleteWeatherDataException(weatherObservation.getStationName(), "Weather phenomenon");
+        }
+
+        if (FORBIDDEN_PHENOMENA.contains(weatherObservation.getPhenomenon())) {
+            throw new VehicleUsageForbiddenException();
+        }
+
+        for (WeatherPhenomenonExtraFee rule : rules) {
+            if (weatherObservation.getPhenomenon().equals(rule.getPhenomenon())) {
+                return rule.getFee();
+            }
+        }
+        return BigDecimal.ZERO;
     }
 
     private BigDecimal getWindSpeedExtraFee(VehicleType vehicle, WeatherObservation weatherObservation) {
